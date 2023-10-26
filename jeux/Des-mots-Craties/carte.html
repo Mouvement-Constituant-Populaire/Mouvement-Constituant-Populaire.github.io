@@ -20,11 +20,11 @@
 		let carte = document.getElementById("carte-mot");
 		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
  
-		let numeroMot = 4;
+		let numeroMot = 3;
 		const currentURL = new URL(window.location.toLocaleString());
 		
 		let urlParams = currentURL.searchParams;
-		if(urlParams.has('n')) numeroMot = urlParams.get('n');
+		if(urlParams.has('n')) numeroMot = urlParams.get('n')-1;
 		
 		fetch(url)
 			.then(response => response.text())

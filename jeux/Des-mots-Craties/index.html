@@ -4,22 +4,16 @@
 		<meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>MCP - Des-mots-Craties</title>				
-		<style type="text/css">		
-				
-		</style>
-
-				
+		<title>MCP - Des-mots-Craties</title>	
+		<link href="style.css" rel="stylesheet" />				
 	</head>
 	<body>
 	 <h1> Des-mots-Craties<h1>
 	 		 
 	 <h2>Lancer une partie !<h2>
-		
-	 <table id="carte-mot"></table>
-	
-	 <table id="csv-data"></table>
 	 
+	 <button onclick="start()" class="button" >Lancer</button>
+			 
 	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
 	 https://creativecommons.org/licenses/by-sa/2.0/fr/deed.fr 
 	 
@@ -27,40 +21,17 @@
 	
 	</body>	
 	
-			<script>
-			
-			//TODO:
-			
-			function choisirMot(niveau) {
-				if(niveau = 1) return Math.floor(Math.random() * 34) + 4;
-				else if(niveau = 2) return Math.floor(Math.random() * 32) + 44;
-				else return Math.floor(Math.random() * 72) + 4;
-			}
-	    
-		let carte = document.getElementById("carte-mot");
-		let table = document.getElementById("csv-data");
-		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
- 
-		fetch(url)
-			.then(response => response.text())
-			.then(data => {
-				let rows = data.split("\n");
-				for (let i = 0; i < rows.length; i++) {
-					let cells = rows[i].split(",");
-					let row = table.insertRow();
-					for (let j = 0; j < cells.length; j++) {
-						let cell = row.insertCell();
-						cell.innerText = cells[j];
-						}
-					}
-				numeroMot = choisirMot(1);
-				let cellulesMot = rows[numeroMot].split(",");
-				for (let k = 0; k < 11; k++) {
-						let celluleMot = carte.insertRow().insertCell();
-						celluleMot.innerText = cellulesMot[k];
-						}			
-				})
-			.catch(error => console.log(error));		
+	<script>	
+	//TODO:
+	
+	function choisirMot(niveau) 
+	{
+		if(niveau = 1) return Math.floor(Math.random() * 34) + 4;
+		else if(niveau = 2) return Math.floor(Math.random() * 32) + 44;
+		else return Math.floor(Math.random() * 72) + 4;
+	}
+
+	numeroMot = choisirMot(1);	
     </script>
 	
 </html>
