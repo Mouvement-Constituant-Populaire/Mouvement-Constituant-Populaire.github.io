@@ -29,7 +29,9 @@
 	</body>	
 	
 	<script>	
-	//TODO:
+	//TODO: Ajouter une colonne "niveau" pour chaque mot. Ensuite, il faudra ignorer la première case dans carte.html.
+	//TODO: créer un game.html pour héberger la partie, avec la liste des tirages dans l'url, et la carte courante
+	//avec des boutons pour faire "carte suivante" et "carte précédente" 
 	
 	function choisirMot(niveau) 
 	{
@@ -68,11 +70,10 @@
 		
 		tirages.forEach(function (item, index, array) {
 				
-			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + 'target="_blank">Carte ' + index + '(' + item + ')</a>';
+			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + index+1 + '(' + item + ')</a>';
 			
 			divListeLiensCarte.innerHTML += "<br/>";
 		});
 	}	
     </script>
-	
 </html>
