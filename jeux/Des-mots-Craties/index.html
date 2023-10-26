@@ -12,8 +12,15 @@
 	 		 
 	 <h2>Lancer une partie !<h2>
 	 
-	 <button onclick="start()" class="button" >Lancer</button>
-			 
+	 <br/>
+	 <button onclick="start()" class="button" >Lancer</button>	 
+	 <br/>
+	 
+	 <div id="listeLiensCarte">
+	 
+	 
+	 </div>
+	 
 	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
 	 https://creativecommons.org/licenses/by-sa/2.0/fr/deed.fr 
 	 
@@ -30,8 +37,20 @@
 		else if(niveau = 2) return Math.floor(Math.random() * 32) + 44;
 		else return Math.floor(Math.random() * 72) + 4;
 	}
-
-	numeroMot = choisirMot(1);	
+	
+	var numeroMot = 0;
+	
+	function start(niveau) 
+	{
+		let divListeLiensCarte = document.getElementById("listeLiensCarte");
+		for (let i = 0; i < 20; i++) 
+		{
+			numeroMot = choisirMot(1);
+			divListeLiensCarte.innerHTML += "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=" + numeroMot;
+			
+			divListeLiensCarte.innerHTML += "<br/>";
+		}
+	}	
     </script>
 	
 </html>
