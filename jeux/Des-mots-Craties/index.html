@@ -48,7 +48,7 @@
 		tirages.push(choisirMot(1));
 		
 		let i = 0;
-		while(tirages.length < 5 && i < 20) 
+		while(tirages.length < 20 && i < 60) 
 		{
 			let num = choisirMot(1);
 			console.log(tirages.length);			
@@ -58,7 +58,7 @@
 			
 			tirages.forEach(function (item, index, array) {
 			if(item == num) pasEncoreChoisi = false;
-			console.log(pasEncoreChoisi)
+			console.log(pasEncoreChoisi);
 			});
 			
 			if (pasEncoreChoisi) tirages.push(num);		
