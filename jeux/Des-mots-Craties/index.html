@@ -43,13 +43,31 @@
 	function start(niveau) 
 	{
 		let divListeLiensCarte = document.getElementById("listeLiensCarte");
-		for (let i = 0; i < 20; i++) 
+		let tirages = new Array();
+		
+		tirages.push(choisirMot(1));
+		
+		let i = 0;
+		while(tirages.length < 15 || i < 30) 
 		{
-			numeroMot = choisirMot(1);
-			divListeLiensCarte.innerHTML += "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=" + numeroMot;
+			let num = choisirMot(1);
+			let pasEncoreChoisi = true;
+			
+			tirages.forEach(function (item, index, array) {
+			if(item = num) pasEncoreChoisi = false;
+			});
+			
+			if (pasEncoreChoisi) tirages.push(num);		
+			
+			i++;		
+		}
+		
+		tirages.forEach(function (item, index, array) {
+				
+			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + 'target="_blank">Carte ' + index + '(' + item + ')</a>;
 			
 			divListeLiensCarte.innerHTML += "<br/>";
-		}
+		});
 	}	
     </script>
 	
