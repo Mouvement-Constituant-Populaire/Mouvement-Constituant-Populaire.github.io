@@ -15,6 +15,8 @@
 	 <h1> Des-mots-Craties<h1>
 	 		 
 	 <h2>Lancer une partie !<h2>
+		
+	 <table id="carte-mot"></table>
 	
 	 <table id="csv-data"></table>
 	 
@@ -26,6 +28,13 @@
 	</body>	
 	
 			<script>
+			function choisirMot(niveau) {
+				if(niveau = 1) return Math.floor(Math.random() * 34) + 4;
+				else if(niveau = 2) return Math.floor(Math.random() * 32) + 44;
+				else return Math.floor(Math.random() * 72) + 4;
+			}
+	    
+		let carte = document.getElementById("carte-mot");
 		let table = document.getElementById("csv-data");
 		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
  
@@ -41,6 +50,12 @@
 						cell.innerText = cells[j];
 						}
 					}
+				numeroMot = choisirMot(1);
+				let cellulesMot = rows[numeroMot].split(",");
+				for (let k = 0; k < 11; k++) {
+						let celluleMot = row.insertRow().insertCell();
+						celluleMot.innerText = cellulesMot[k];
+						}			
 				})
 			.catch(error => console.log(error));		
     </script>
