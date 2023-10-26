@@ -7,75 +7,25 @@
 		<title>MCP - Des-mots-Craties</title>				
 		<style type="text/css">		
 				
-    table th, table td{
-    padding: 5px;
-}
-		
-button {
-  width: 68px;
-  height: 30px;
-  float: left;
-  margin-left: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 10px;
-  box-shadow: 5px 5px 5px #888888;
-}
 		</style>
 		<script>
-		function readCSVFile(){
-     var files = document.querySelector('#file').files;
-
-     if(files.length > 0 ){
-
-          // Selected file
-          var file = files[0];
-
-          // FileReader Object
-          var reader = new FileReader();
-
-          // Read file as string 
-          reader.readAsText(file);
-
-          // Load event
-          reader.onload = function(event) {
-
-               // Read file data
-               var csvdata = event.target.result;
-
-               // Split by line break to gets rows Array
-               var rowData = csvdata.split('\n');
-
-               // <table > <tbody>
-               var tbodyEl = document.getElementById('tblcsvdata').getElementsByTagName('tbody')[0];
-               tbodyEl.innerHTML = "";
-
-               // Loop on the row Array (change row=0 if you also want to read 1st row)
-               for (var row = 1; row < rowData.length; row++) {
-
-                     // Insert a row at the end of table
-                     var newRow = tbodyEl.insertRow();
-
-                     // Split by comma (,) to get column Array
-                     rowColData = rowData[row].split(',');
-
-                     // Loop on the row column Array
-                     for (var col = 0; col < rowColData.length; col++) {
-
-                          // Insert a cell at the end of the row
-                          var newCell = newRow.insertCell();
-                          newCell.innerHTML = rowColData[col];
-
-                     }
-
-               }
-          };
-
-     }else{
-          alert("Please select a file.");
-     }
-
-}
+		let table = document.getElementById("csv-data");
+		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
+ 
+		fetch(url)
+			.then(response => response.text())
+			.then(data => {
+				let rows = data.split("\n");
+				for (let i = 0; i < rows.length; i++) {
+					let cells = rows[i].split(",");
+					let row = table.insertRow();
+					for (let j = 0; j < cells.length; j++) {
+						let cell = row.insertCell();
+						cell.innerText = cells[j];
+						}
+					}
+				})
+			.catch(error => console.log(error));		
     </script>
 				
 	</head>
@@ -83,28 +33,8 @@ button {
 	 <h1> Des-mots-Craties<h1>
 	 		 
 	 <h2>Lancer une partie !<h2>
-	 
-	 <input type="file" name="file" id="file" accept=".csv" > <br><br>
-     <input type="button" id="btnsubmit" value="Submit" onclick="readCSVFile();" >
-    
-  <!-- List CSV file data -->
-    <table id="tblcsvdata" border="1" style="border-collapse: collapse;">
-         <thead>
-              <tr>
-                  <th>S.no</th>
-                  <th>Username</th>
-                  <th>Name</th>
-                  <th>Email</th>
-              </tr>
-         </thead>
-         <tbody>
-
-         </tbody>
-
-    </table>
-
-
-	 
+	
+	 <table id="csv-data"></table>
 	 
 	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
 	 https://creativecommons.org/licenses/by-sa/2.0/fr/deed.fr 
