@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MCP - Des-mots-Craties</title>				
+		<style type="text/css">		
+				
+		</style>
+	</head>
+	<body>
+	 <table id="carte-mot"></table>
+	</body>	
+	<script>
+	//const queryString = window.location.search;
+	//console.log(queryString);
+	
+			
+		let carte = document.getElementById("carte-mot");
+		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
+ 
+		let numeroMot = 4;
+		const currentURL = new URL(window.location.toLocaleString());
+		
+		let urlParams = currentURL.searchParams;
+		if(urlParams.has('n') numeroMot = urlParams.get('n');
+		
+		fetch(url)
+			.then(response => response.text())
+			.then(data => {
+				let cellulesMot = rows[numeroMot].split(",");
+				for (let k = 0; k < 11; k++) {
+						let celluleMot = carte.insertRow().insertCell();
+						celluleMot.innerText = cellulesMot[k];
+						}			
+				})
+			.catch(error => console.log(error));		
+    </script>
+	
+</html>
