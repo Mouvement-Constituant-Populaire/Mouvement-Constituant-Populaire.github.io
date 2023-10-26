@@ -2,6 +2,8 @@
 <html lang="fr">
 	<head>
 		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>MCP - Des-mots-Craties</title>				
 		<style type="text/css">		
 button {
@@ -15,11 +17,33 @@ button {
   box-shadow: 5px 5px 5px #888888;
 }
 		</style>
+		<script>
+			const fileForm = document.getElementById("fileForm");
+			const csvFile = document.getElementById("csvFile");
+			
+			fileForm.addEventListener("submit", function (e) {
+				e.preventDefault();
+				const input = csvFile.files[0];
+				const reader = new FileReader();
+				reader.onload = function (e) {
+					const text = e.target.result;
+					document.write(text);
+				};
+				reader.readAsText(input);
+			});
+    </script>
+				
 	</head>
 	<body>
 	 <h1> Des-mots-Craties<h1>
 	 		 
 	 <h2>Lancer une partie !<h2>
+	 
+	 <form id="fileForm">
+        <input type="file" id="csvFile" accept=".csv" />
+        <br/>
+        <input type="submit" value="Valider" />
+	 </form>	 
 	 
 	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
 	 https://creativecommons.org/licenses/by-sa/2.0/fr/deed.fr 
