@@ -24,7 +24,7 @@
 		const currentURL = new URL(window.location.toLocaleString());
 		
 		let urlParams = currentURL.searchParams;
-		if(urlParams.has('n') numeroMot = urlParams.get('n');
+		if(urlParams.has('n')) numeroMot = urlParams.get('n');
 		
 		fetch(url)
 			.then(response => response.text())
