@@ -69,8 +69,8 @@
 		}
 		
 		tirages.forEach(function (item, index, array) {
-				
-			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + index+1 + '(' + item + ')</a>';
+			let n = index + 1;	
+			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + n + '(' + item + ')</a>';
 			
 			divListeLiensCarte.innerHTML += "<br/>";
 		});
