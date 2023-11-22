@@ -79,6 +79,7 @@
 			.then(response => response.text())
 			.then(data => 
 				{
+					console.log(data);
 					let rows = data.split("\n");
 					rows.foreach(function (item, index, array) {
 						console.log(item);
