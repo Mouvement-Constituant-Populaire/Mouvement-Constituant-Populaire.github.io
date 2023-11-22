@@ -79,9 +79,12 @@
 			.then(response => response.text())
 			.then(data => 
 				{
-					console.log(data);
+					//console.log(data);
 					let rows = data.split("\n");
+					console.log("rows :");
+					console.log(rows);
 					rows.foreach(function (item, index, array) {
+						console.log("item :");
 						console.log(item);
 						cells = item.split(",");
 						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3)) )indexMotsPossibles.push(index);
