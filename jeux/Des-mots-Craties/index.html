@@ -13,16 +13,27 @@
 	 <h2>Lancer une partie !</h2>
 	 	 
 	 <form id="options_partie" method="post">
-		<select multiple name="Niveau">
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-		</select>
+	    <fieldset>
+		    <legend>Choisissez votre niveau de difficulté :</legend>
+			<div>
+				<input type="checkbox" id="niv1" name="niv1" checked />
+				<label for="niv1">Niveau 1</label>
+			</div>
+			<div>
+				<input type="checkbox" id="niv2" name="niv2" />
+				<label for="niv2">Niveau 2</label>
+			</div>
+			<div>
+				<input type="checkbox" id="niv3" name="niv3" />
+				<label for="niv3">Niveau 3</label>
+			</div>
+	    </fieldset> 
+	 
 		<button onclick="creerPartie()" class="button" >Créer la partie"</button>
 	</form>
 	
 	 <br/>
-	 <button onclick="tire20cartes(1)" class="button" >Tirer 20 cartes de niveau 1</button>	 
+	 <button onclick="tirer20cartes(1)" class="button" >Tirer 20 cartes de niveau 1</button>	 
 	 <br/>
 	 
 	 <div id="listeLiensParties">
@@ -54,13 +65,12 @@
 	
 	var numeroMot = 0;
 	
-
-	function tire20cartes(niveau) 
+	function tirer20cartes(niveau) 
 	{
 		let divListeLiensCarte = document.getElementById("listeLiensCarte");
 		let tirages = new Array();
 		
-		tirages.push(choisirMot(1));
+		tirages.push(choisirMot(niveau));
 		
 		let i = 0;
 		while(tirages.length < 20 && i < 60) 
