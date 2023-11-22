@@ -23,19 +23,21 @@
 	
 	</body>	
 	
-	<script>	
+	<script>
 	
 	var numeroMot = 0;
 	
-	function start(niveau) 
+	function start(niveau)
 	{
 		let divListeLiensCarte = document.getElementById("listeLiensCarte");
 		
-		let tirages;
+		let tirages_string;
 		const currentURL = new URL(window.location.toLocaleString());
 		
 		let urlParams = currentURL.searchParams;
-		if(urlParams.has('cartes')) tirages = urlParams.get('cartes');
+		if(urlParams.has('cartes')) tirages_string = urlParams.get('cartes');
+		
+		tirages= tirages_string.split(",");
 					
 		tirages.forEach(function (item, index, array) {
 			let n = index + 1;	
