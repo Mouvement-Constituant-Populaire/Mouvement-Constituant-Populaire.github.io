@@ -50,11 +50,9 @@
 	//TODO: créer un game.html pour héberger la partie, avec la liste des tirages dans l'url, et la carte courante
 	//avec des boutons pour faire "carte suivante" et "carte précédente" 
 	
-	function choisirMot(niv1,niv2,niv3) 
+	function getRandomInteger(max) 
 	{
-		if(niveau = 1) return Math.floor(Math.random() * 34) + 4;
-		else if(niveau = 2) return Math.floor(Math.random() * 32) + 44;
-		else return Math.floor(Math.random() * 72) + 4;
+		Math.floor(Math.random() * max);
 	}
 	
 	var numeroMot = 0;
@@ -111,12 +109,21 @@
 		
 		let tirages = new Array();
 		
-		tirages.push(indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.length)]);
+		let randomNumber = getRandomInteger(indexMotsPossibles.length));
+		console.log("Tirage aléatoire = " + randomNumber);		
+		console.log("Index mot valide correspondant = " + indexMotsPossibles[randomNumber]);
+		
+		tirages.push(indexMotsPossibles[randomNumber]);
 		
 		let i = 0;
 		while(tirages.length < 20 && i < 60) 
 		{
-			let mot = indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.length)];
+			randomNumber = getRandomInteger(indexMotsPossibles.length));
+			console.log("Tirage aléatoire = " + randomNumber);		
+			console.log("Index mot valide correspondant = " + indexMotsPossibles[randomNumber]);
+			
+			let mot = indexMotsPossibles[randomNumber];
+			
 			console.log(" tirages.length : " + tirages.length);
 			console.log("index du mot tiré : " + mot);
 			
