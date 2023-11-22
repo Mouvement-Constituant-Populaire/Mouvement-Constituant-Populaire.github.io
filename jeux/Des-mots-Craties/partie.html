@@ -37,7 +37,7 @@
 		let urlParams = currentURL.searchParams;
 		if(urlParams.has('cartes')) tirages_string = urlParams.get('cartes');
 		
-		tirages= tirages_string.split(",");
+		tirages = tirages_string.split(",");
 					
 		tirages.forEach(function (item, index, array) {
 			let n = index + 1;	

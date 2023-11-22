@@ -33,17 +33,11 @@
 	 <br/>
 	 <button onclick="creerPartie()" class="button" >Créer la partie</button>
 	 <br/>
-	
+	 <br/>
+	 
 	 <div id="listeLiensParties">
 	 </div>
-	
-	 <br/>
-	 <button onclick="tirer20cartes(1)" class="button" >Tirer 20 cartes de niveau 1</button>	 
-	 <br/>
-	 
-	 <div id="listeLiensCarte">
-	 </div>
-	 
+		 
 	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
 	 https://creativecommons.org/licenses/by-sa/2.0/fr/deed.fr 
 	 
@@ -56,7 +50,7 @@
 	//TODO: créer un game.html pour héberger la partie, avec la liste des tirages dans l'url, et la carte courante
 	//avec des boutons pour faire "carte suivante" et "carte précédente" 
 	
-	function choisirMot(niveau) 
+	function choisirMot(niv1,niv2,niv3) 
 	{
 		if(niveau = 1) return Math.floor(Math.random() * 34) + 4;
 		else if(niveau = 2) return Math.floor(Math.random() * 32) + 44;
@@ -64,64 +58,57 @@
 	}
 	
 	var numeroMot = 0;
-	
-	function tirer20cartes(niveau) 
-	{
-		let divListeLiensCarte = document.getElementById("listeLiensCarte");
-		let tirages = new Array();
-		
-		tirages.push(choisirMot(niveau));
-		
-		let i = 0;
-		while(tirages.length < 20 && i < 60) 
-		{
-			let num = choisirMot(1);
-			console.log(tirages.length);			
-			console.log(num);
 			
-			let pasEncoreChoisi = true;
-			
-			tirages.forEach(function (item, index, array) {
-			if(item == num) pasEncoreChoisi = false;
-			console.log(pasEncoreChoisi);
-			});
-			
-			if (pasEncoreChoisi) tirages.push(num);		
-			
-			i++;		
-		}
-					
-		tirages.forEach(function (item, index, array) {
-			let n = index + 1;	
-			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + n + '(' + item + ')</a>';
-			
-			divListeLiensCarte.innerHTML += "<br/>";
-		});
-				
-	}		
-		
 	function creerPartie(niveau) 
 	{
 		let listeLiensParties = document.getElementById("listeLiensParties");
+		
+		let niv1ChBx = document.getElementById("niv1"); 		
+		let niv2ChBx = document.getElementById("niv2");		
+		let niv3ChBx = document.getElementById("niv3");
+		
+		let niv1 = niv1ChBx.checked;		
+		let niv2 = niv2ChBx.checked;				
+		let niv3 = niv2ChBx.checked;
+		
+		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
+ 
+		indexMotsPossibles = new Array();
+		
+		fetch(url)
+			.then(response => response.text())
+			.then(data => 
+				{
+					let rows = data.split("\n");
+					rows.foreach(function (item, index, array) {
+						cells = rows.split(",");
+						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3))indexMotsPossibles.push(index);
+					});
+					
+				})
+			.catch(error => console.log(error));		
+		
+		console.log(indexMotsPossibles);
+		
 		let tirages = new Array();
 		
-		tirages.push(choisirMot(1));
+		tirages.push(indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.size())]);
 		
 		let i = 0;
 		while(tirages.length < 20 && i < 60) 
 		{
-			let num = choisirMot(1);
-			console.log(tirages.length);			
-			console.log(num);
+			let mot = indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.size())];
+			//console.log(tirages.length);			
+			//console.log(mot);
 			
 			let pasEncoreChoisi = true;
 			
 			tirages.forEach(function (item, index, array) {
-			if(item == num) pasEncoreChoisi = false;
-			console.log(pasEncoreChoisi);
+			if(item == mot) pasEncoreChoisi = false;
+			//console.log(pasEncoreChoisi);
 			});
 			
-			if (pasEncoreChoisi) tirages.push(num);		
+			if (pasEncoreChoisi) tirages.push(mot);		
 			
 			i++;		
 		}
@@ -133,7 +120,8 @@
 			let n = index + 1;	
 			game_url += item + ','; 
 		});
-				
+		
+		game_url.slice(0, -1);
 		game_url += '" target="_blank">Lien vers la partie</a>';
 		
 		listeLiensParties.innerHTML += game_url;
