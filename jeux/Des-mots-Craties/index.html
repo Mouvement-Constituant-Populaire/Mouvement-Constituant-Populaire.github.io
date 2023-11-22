@@ -53,6 +53,42 @@
 	}
 	
 	var numeroMot = 0;
+	
+
+	function tire20cartes(niveau) 
+	{
+		let divListeLiensCarte = document.getElementById("listeLiensCarte");
+		let tirages = new Array();
+		
+		tirages.push(choisirMot(1));
+		
+		let i = 0;
+		while(tirages.length < 20 && i < 60) 
+		{
+			let num = choisirMot(1);
+			console.log(tirages.length);			
+			console.log(num);
+			
+			let pasEncoreChoisi = true;
+			
+			tirages.forEach(function (item, index, array) {
+			if(item == num) pasEncoreChoisi = false;
+			console.log(pasEncoreChoisi);
+			});
+			
+			if (pasEncoreChoisi) tirages.push(num);		
+			
+			i++;		
+		}
+					
+		tirages.forEach(function (item, index, array) {
+			let n = index + 1;	
+			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + n + '(' + item + ')</a>';
+			
+			divListeLiensCarte.innerHTML += "<br/>";
+		});
+				
+	}		
 		
 	function creerPartie(niveau) 
 	{
@@ -94,39 +130,5 @@
 		listeLiensParties.innerHTML += "<br/> ";
 	}	
 	
-	function tire20cartes(niveau) 
-	{
-		let divListeLiensCarte = document.getElementById("listeLiensCarte");
-		let tirages = new Array();
-		
-		tirages.push(choisirMot(1));
-		
-		let i = 0;
-		while(tirages.length < 20 && i < 60) 
-		{
-			let num = choisirMot(1);
-			console.log(tirages.length);			
-			console.log(num);
-			
-			let pasEncoreChoisi = true;
-			
-			tirages.forEach(function (item, index, array) {
-			if(item == num) pasEncoreChoisi = false;
-			console.log(pasEncoreChoisi);
-			});
-			
-			if (pasEncoreChoisi) tirages.push(num);		
-			
-			i++;		
-		}
-					
-		tirages.forEach(function (item, index, array) {
-			let n = index + 1;	
-			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + n + '(' + item + ')</a>';
-			
-			divListeLiensCarte.innerHTML += "<br/>";
-		});
-				
-	}	
     </script>
 </html>
