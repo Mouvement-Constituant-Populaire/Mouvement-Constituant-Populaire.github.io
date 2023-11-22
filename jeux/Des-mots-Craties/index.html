@@ -81,13 +81,15 @@
 				{
 					let rows = data.split("\n");
 					rows.foreach(function (item, index, array) {
-						cells = rows.split(",");
+						console.log(item);
+						cells = item.split(",");
 						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3)) )indexMotsPossibles.push(index);
 					});
 					
 				})
 			.catch(error => console.log(error));		
 		
+		console.log("indexMotsPossibles : " );
 		console.log(indexMotsPossibles);
 		
 		let tirages = new Array();
