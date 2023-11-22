@@ -81,13 +81,26 @@
 				{
 					//console.log(data);
 					let rows = data.split("\n");
-					console.log("rows :");
-					console.log(rows);
+					//console.log("rows :");
+					//console.log(rows);
 					rows.forEach(function (item, index, array) {
 						console.log("item :");
 						console.log(item);
+						
 						cells = item.split(",");
-						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3)) )indexMotsPossibles.push(index);
+						
+						console.log("cell 0 :");
+						console.log(cells[0]);
+						console.log("cell 9 :");
+						console.log(cells[9]);
+						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3)) )
+						{
+						  console.log("Ligne "+ index + " valide !");
+						  indexMotsPossibles.push(index);
+						}
+						else { 
+						  console.log("Ligne "+ index + " non valide !");
+						  }
 					});
 					
 				})
