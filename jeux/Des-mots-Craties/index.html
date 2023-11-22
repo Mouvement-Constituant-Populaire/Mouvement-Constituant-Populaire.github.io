@@ -92,12 +92,12 @@
 		
 		let tirages = new Array();
 		
-		tirages.push(indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.size())]);
+		tirages.push(indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.length)]);
 		
 		let i = 0;
 		while(tirages.length < 20 && i < 60) 
 		{
-			let mot = indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.size())];
+			let mot = indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.length)];
 			//console.log(tirages.length);			
 			//console.log(mot);
 			
