@@ -73,7 +73,7 @@
 		
 		let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQCQIE7mV0sWHvabQll9uWG-P7QZNrB3mxBCQR-rZGRZ9eX2alM_eMl6H3zTt9cP9DLMJQGLZwrOVDW/pub?gid=0&single=true&output=csv";
  
-		indexMotsPossibles = new Array();
+		let indexMotsPossibles = new Array();
 		
 		fetch(url)
 			.then(response => response.text())
@@ -82,7 +82,7 @@
 					let rows = data.split("\n");
 					rows.foreach(function (item, index, array) {
 						cells = rows.split(",");
-						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3))indexMotsPossibles.push(index);
+						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3)) )indexMotsPossibles.push(index);
 					});
 					
 				})
