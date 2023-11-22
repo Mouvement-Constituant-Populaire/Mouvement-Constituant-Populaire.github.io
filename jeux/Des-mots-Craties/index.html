@@ -95,11 +95,11 @@
 						//console.log(cells[9]);
 						if( (cells[9] != "") && (((cells[0] == 1) && niv1) || ((cells[0] == 2) && niv2) || ((cells[0] == 3) && niv3)) )
 						{
-						  console.log("Ligne "+ index + " valide !");
+						  //console.log("Ligne "+ index + " valide !");
 						  indexMotsPossibles.push(index);
 						}
 						else { 
-						  console.log("Ligne "+ index + " non valide !");
+						  //console.log("Ligne "+ index + " non valide !");
 						  }
 					});
 					
@@ -117,20 +117,23 @@
 		while(tirages.length < 20 && i < 60) 
 		{
 			let mot = indexMotsPossibles[Math.floor(Math.random() * indexMotsPossibles.length)];
-			//console.log(tirages.length);			
-			//console.log(mot);
+			console.log(" tirages.length : " + tirages.length);
+			console.log("index du mot tiré : " + mot);
 			
 			let pasEncoreChoisi = true;
 			
 			tirages.forEach(function (item, index, array) {
 			if(item == mot) pasEncoreChoisi = false;
-			//console.log(pasEncoreChoisi);
+			console.log(" pasEncoreChoisi " + pasEncoreChoisi);
 			});
 			
 			if (pasEncoreChoisi) tirages.push(mot);		
 			
 			i++;		
 		}
+		
+		console.log(" tirages : ");
+		console.log(tirages);
 		
 		niveau = "1";
 		game_url = '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/partie.html?niveaux=' + niveau + '&cartes='; 
