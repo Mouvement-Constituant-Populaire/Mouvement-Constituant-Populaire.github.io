@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MCP - Des-mots-Craties</title>	
+		<link href="style.css" rel="stylesheet" />				
+	</head>
+	<body>
+	 <h1> Des-mots-Craties</h1>
+	 		 
+	 <h2>Voici vos cartes pour cette partie:!</h2>
+	 
+	 <div id="listeLiensCarte">
+	 	 
+	 </div>
+	 
+	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
+	 https://creativecommons.org/licenses/by-sa/2.0/fr/deed.fr 
+	 
+	 Sauf pour les contenus dont il est fait mention explicitement d'une autre licence ou d'un copyright tiers.
+	
+	</body>	
+	
+	<script>	
+	
+	var numeroMot = 0;
+	
+	function start(niveau) 
+	{
+		let divListeLiensCarte = document.getElementById("listeLiensCarte");
+		
+		let tirages;
+		const currentURL = new URL(window.location.toLocaleString());
+		
+		let urlParams = currentURL.searchParams;
+		if(urlParams.has('cartes')) tirages = urlParams.get('cartes');
+					
+		tirages.forEach(function (item, index, array) {
+			let n = index + 1;	
+			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + n + '(' + item + ')</a>';
+			
+			divListeLiensCarte.innerHTML += "<br/>";
+		});
+	}	
+    </script>
+</html>

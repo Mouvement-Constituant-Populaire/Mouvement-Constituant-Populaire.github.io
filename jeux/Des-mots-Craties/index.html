@@ -11,14 +11,26 @@
 	 <h1> Des-mots-Craties</h1>
 	 		 
 	 <h2>Lancer une partie !</h2>
-	 
+	 	 
+	 <form id="options_partie" method="post">
+		<select multiple name="Niveau">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+		</select>
+		<button onclick="creerPartie()" class="button" >Créer la partie"</button>
+	</form>
+	
 	 <br/>
-	 <button onclick="start()" class="button" >Lancer</button>	 
+	 <button onclick="tire20cartes(1)" class="button" >Tirer 20 cartes de niveau 1</button>	 
 	 <br/>
 	 
+	 <div id="listeLiensParties">
+	 	 
+	 </div>
+	
 	 <div id="listeLiensCarte">
-	 
-	 
+	 	 
 	 </div>
 	 
 	 L'ensemble des documents, codes sources et images sont distribués sous la licence CC-BY-SA V2.0.
@@ -41,8 +53,48 @@
 	}
 	
 	var numeroMot = 0;
+		
+	function creerPartie(niveau) 
+	{
+		let listeLiensParties = document.getElementById("listeLiensParties");
+		let tirages = new Array();
+		
+		tirages.push(choisirMot(1));
+		
+		let i = 0;
+		while(tirages.length < 20 && i < 60) 
+		{
+			let num = choisirMot(1);
+			console.log(tirages.length);			
+			console.log(num);
+			
+			let pasEncoreChoisi = true;
+			
+			tirages.forEach(function (item, index, array) {
+			if(item == num) pasEncoreChoisi = false;
+			console.log(pasEncoreChoisi);
+			});
+			
+			if (pasEncoreChoisi) tirages.push(num);		
+			
+			i++;		
+		}
+		
+		niveau = "1";
+		game_url = '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/partie.html?niveaux=' + niveau + '&cartes=; 
+				
+		tirages.forEach(function (item, index, array) {
+			let n = index + 1;	
+			game_url += item + ','; 
+		});
+				
+		game_url += '" target="_blank">Lien vers la partie</a>';
+		
+		listeLiensParties.innerHTML += game_url;
+		listeLiensParties.innerHTML += "<br/> ";
+	}	
 	
-	function start(niveau) 
+	function tire20cartes(niveau) 
 	{
 		let divListeLiensCarte = document.getElementById("listeLiensCarte");
 		let tirages = new Array();
@@ -67,13 +119,14 @@
 			
 			i++;		
 		}
-		
+					
 		tirages.forEach(function (item, index, array) {
 			let n = index + 1;	
 			divListeLiensCarte.innerHTML += '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/carte.html?n=' + item + '" target="_blank">Carte ' + n + '(' + item + ')</a>';
 			
 			divListeLiensCarte.innerHTML += "<br/>";
 		});
+				
 	}	
     </script>
 </html>
