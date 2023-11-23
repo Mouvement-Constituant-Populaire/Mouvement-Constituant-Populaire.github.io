@@ -52,7 +52,9 @@
 	
 	function getRandomInteger(max) 
 	{
-		return Math.floor(Math.random() * max);
+		let r = Math.floor(Math.random() * max);
+		console.log("getRandomInteger( " + max + " ) = " + r);
+		return r;
 	}
 	
 	var numeroMot = 0;
@@ -107,9 +109,12 @@
 		console.log("indexMotsPossibles : " );
 		console.log(indexMotsPossibles);
 		
+		let nombresMotsPossibles = indexMotsPossibles.length;
+		console.log("nombresMotsPossibles = " + nombresMotsPossibles);		
+		
 		let tirages = new Array();
 		
-		let randomNumber = getRandomInteger(indexMotsPossibles.length);
+		let randomNumber = getRandomInteger(nombresMotsPossibles);
 		console.log("Tirage aléatoire = " + randomNumber);		
 		console.log("Index mot valide correspondant = " + indexMotsPossibles[randomNumber]);
 		
@@ -118,14 +123,13 @@
 		let i = 0;
 		while(tirages.length < 20 && i < 60) 
 		{
-			randomNumber = getRandomInteger(indexMotsPossibles.length);
+			randomNumber = getRandomInteger(nombresMotsPossibles);
 			console.log("Tirage aléatoire = " + randomNumber);		
 			console.log("Index mot valide correspondant = " + indexMotsPossibles[randomNumber]);
 			
 			let mot = indexMotsPossibles[randomNumber];
 			
-			console.log(" tirages.length : " + tirages.length);
-			console.log("index du mot tiré : " + mot);
+			console.log(" Index mot valide correspondant = " + mot);
 			
 			let pasEncoreChoisi = true;
 			
@@ -134,7 +138,9 @@
 			console.log(" pasEncoreChoisi " + pasEncoreChoisi);
 			});
 			
-			if (pasEncoreChoisi) tirages.push(mot);		
+			if (pasEncoreChoisi) tirages.push(mot);				
+			
+			console.log(" tirages.length : " + tirages.length);
 			
 			i++;		
 		}
