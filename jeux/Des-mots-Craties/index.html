@@ -75,6 +75,8 @@
  
 		let indexMotsPossibles = new Array();
 		
+		let nombresMotsPossibles = 0;
+		
 		fetch(url)
 			.then(response => response.text())
 			.then(data => 
@@ -97,6 +99,7 @@
 						{
 						  //console.log("Ligne "+ index + " valide !");
 						  indexMotsPossibles.push(index);
+						  nombresMotsPossibles++;
 						}
 						else { 
 						  //console.log("Ligne "+ index + " non valide !");
@@ -109,7 +112,7 @@
 		console.log("indexMotsPossibles : " );
 		console.log(indexMotsPossibles);
 		
-		let nombresMotsPossibles = indexMotsPossibles.length;
+		//let nombresMotsPossibles = indexMotsPossibles.length;
 		console.log("nombresMotsPossibles = " + nombresMotsPossibles);		
 		
 		let tirages = new Array();
