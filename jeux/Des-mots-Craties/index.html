@@ -105,8 +105,7 @@
 						  //console.log("Ligne "+ index + " non valide !");
 						  }
 					});
-						
-		
+								
 		console.log("indexMotsPossibles : " );
 		console.log(indexMotsPossibles);
 		
@@ -153,10 +152,10 @@
 		game_url = '<a href= "https://mouvement-constituant-populaire.github.io/jeux/Des-mots-Craties/partie.html?niveaux=' + niveau + '&cartes='; 
 				
 		tirages.forEach(function (item, index, array) {
-			let n = index + 1;	
 			game_url += item + ','; 
 		});
 		
+		game_url.slice(0, -1);
 		game_url.slice(0, -1);
 		game_url += '" target="_blank">Lien vers la partie</a>';
 		
