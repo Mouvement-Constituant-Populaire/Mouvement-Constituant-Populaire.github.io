@@ -1,0 +1,19 @@
+Prochaines étapes :
+
+Court terme
+- ajout d'un numéro de partie si possible
+- débug des non-cartes des lignes 1 à 3
+- possibilité de choisir le nombre de mots interdits
+- changement de couleur de carte selon niveau
+- ajout de "mot à faire deviner" et "mots interdits"
+
+Moyen terme
+- envoi de la carte à l'arbitre et à l'orateur dans le tchat
+- démarrage du chrono dans le tchat quand envoi à l'orateur
+
+Long terme
+- automatisation de l'ensemble des tâches du Maitre du jeu
+- bouton pour afficher la carte avec notre définition du lexique
+
+Très très long terme (lol)
+- ajouter un système d'identification et un jitsi à la page web pour pouvoir se passer de discord (relol)
