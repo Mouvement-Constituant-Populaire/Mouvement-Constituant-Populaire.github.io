@@ -1,0 +1,296 @@
+/* ===========================
+   VARIABLES (THEME CLAIR)
+=========================== */
+:root {
+  --bg: #d6e6ff;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #1e3a8a;
+  --primary-dark: #162f6d;
+  --accent: #EDB307;       /* JAUNE – ON GARDE */
+  --accent-soft: #ffe680;  /* JAUNE CLAIR – ON GARDE */
+  --btn-text: #ffffff;
+}
+
+/* ===========================
+   THEME SOMBRE
+=========================== */
+body.dark {
+  --bg: #0f172a;
+  --card-bg: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #60a5fa;
+  --primary-dark: #1d4ed8;
+
+  /* ON NE TOUCHE PAS AU JAUNE */
+  --accent: #EDB307;
+  --accent-soft: #ffe680;
+
+  --btn-text:#111827;
+;
+
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* ===========================
+   BASE
+=========================== */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  font-size: 16px; /* ✔️ Taille stable */
+}
+
+/* ===========================
+   HEADER
+=========================== */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.theme-label {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+#themeSwitch {
+  border: none;
+  background: var(--card-bg);
+  border-radius: 999px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ===========================
+   ACCUEIL
+=========================== */
+.home-screen {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.home-card {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 520px;
+  padding: 30px;
+  border-radius: 28px;
+  border: 5px solid var(--primary);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.home-logo {
+  width: 110px;
+}
+
+.home-title {
+  font-size: 30px;
+  color: var(--primary);
+}
+
+.home-subtitle {
+  font-size: 17px;
+  color: var(--muted);
+}
+
+.levels {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.level-btn {
+  padding: 10px 16px;
+  border-radius: 14px;
+  border: 3px solid var(--primary);
+  background: var(--accent);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.level-btn.selected {
+  outline: 3px solid var(--primary);
+  background: var(--accent-soft);
+}
+
+.start-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* ===========================
+   QUIZ
+=========================== */
+.hidden {
+  display: none;
+}
+
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.quiz-card {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 600px;
+  padding: 25px;
+  border-radius: 25px;
+  border: 5px solid var(--primary);
+}
+
+.score-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.answers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ===========================
+   RÉPONSES
+=========================== */
+.answer {
+  padding: 12px;
+  border: 3px solid var(--primary);
+  border-radius: 15px;
+  font-weight: bold;
+  background: var(--accent); /* JAUNE */
+  cursor: pointer;
+  color: #111827; /* ✔️  */
+}
+
+/* ✔️ FIX : TEXTE NOIR SUR JAUNE EN SOMBRE */
+body.dark .answer {
+  color:#111827;
+}
+body.dark .answer.selected {
+  background: var(--primary);
+  color: white;}
+body.dark .answer.correct {
+  background: #16a34a;
+  color: white;
+}
+body.dark .answer.wrong {
+  background: #990000;
+  color: white;
+}
+.answer.selected {
+  background: var(--primary);
+  color: white;
+}
+
+.answer.correct {
+  background: #16a34a;
+  color: white;
+}
+
+.answer.wrong {
+  background: #990000;
+  color: white;
+}
+
+/* ===========================
+   BOUTONS
+=========================== */
+.btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 15px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+}
+
+body.dark .btn {
+  background: var(--primary);
+  color: white;
+}
+
+.next {
+  background: #475569;
+  color: white;
+}
+
+/* ===========================
+   TEXTE QUIZ
+=========================== */
+#definition,
+#feedback,
+#question-text {
+  font-size: 16px;
+  color: var(--text);
+}
+
+/* ===========================
+   LOGO + RETOUR
+=========================== */
+.quiz-logo {
+  width: 80px;
+  margin-top: 20px;
+}
+.footer{
+  display: flex;
+  justify-content: center;
+
+  padding: 30px;
+}
+.footer-logo{
+  max-width: 600px;
+  width: 100%;
+    margin: 0 auto;
+}
+#returnHome {
+  background: linear-gradient(135deg, #007bff, #00bfff);
+  color: white;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.25s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#returnHome.hidden {
+  display: none;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+@media (max-width: 600px) {
+  .answers {
+    grid-template-columns: 1fr;
+  }
+}
