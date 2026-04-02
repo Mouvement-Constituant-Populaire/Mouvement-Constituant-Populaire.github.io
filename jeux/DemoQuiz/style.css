@@ -6,11 +6,18 @@
   --card-bg: #ffffff;
   --text: #111827;
   --muted: #6b7280;
+
   --primary: #1e3a8a;
   --primary-dark: #162f6d;
-  --accent: #EDB307;       /* JAUNE – ON GARDE */
-  --accent-soft: #ffe680;  /* JAUNE CLAIR – ON GARDE */
+
+  --accent: #EDB307;
+  --accent-soft: #ffe680;
+
   --btn-text: #ffffff;
+
+  --radius: 20px;
+  --shadow: 0 10px 25px rgba(0,0,0,0.15);
+  --transition: 0.25s ease;
 }
 
 /* ===========================
@@ -21,29 +28,21 @@ body.dark {
   --card-bg: #111827;
   --text: #e5e7eb;
   --muted: #9ca3af;
+
   --primary: #60a5fa;
   --primary-dark: #1d4ed8;
 
-  /* ON NE TOUCHE PAS AU JAUNE */
-  --accent: #EDB307;
-  --accent-soft: #ffe680;
-
-  --btn-text:#111827;
-;
-
-  background: var(--bg);
-  color: var(--text);
+  --btn-text: #111827;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* ===========================
-   BASE
-=========================== */
 body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
   font-family: Arial, sans-serif;
-  font-size: 16px; /* ✔️ Taille stable */
+  font-size: 16px;
+  transition: background var(--transition), color var(--transition);
 }
 
 /* ===========================
@@ -68,6 +67,7 @@ body {
   padding: 6px 12px;
   cursor: pointer;
   font-size: 18px;
+  transition: var(--transition);
 }
 
 /* ===========================
@@ -84,9 +84,9 @@ body {
   width: 100%;
   max-width: 520px;
   padding: 30px;
-  border-radius: 28px;
+  border-radius: var(--radius);
   border: 5px solid var(--primary);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  box-shadow: var(--shadow);
   text-align: center;
 }
 
@@ -113,11 +113,15 @@ body {
 
 .level-btn {
   padding: 10px 16px;
-  border-radius: 14px;
+  border-radius: var(--radius);
   border: 3px solid var(--primary);
   background: var(--accent);
   cursor: pointer;
-  transition: 0.2s;
+  transition: var(--transition);
+}
+
+.level-btn:hover {
+  transform: scale(1.05);
 }
 
 .level-btn.selected {
@@ -131,9 +135,14 @@ body {
   background: var(--primary);
   color: white;
   border: none;
-  border-radius: 16px;
+  border-radius: var(--radius);
   cursor: pointer;
   font-size: 18px;
+  transition: var(--transition);
+}
+
+.start-btn:hover {
+  transform: scale(1.03);
 }
 
 /* ===========================
@@ -155,8 +164,9 @@ body {
   width: 100%;
   max-width: 600px;
   padding: 25px;
-  border-radius: 25px;
+  border-radius: var(--radius);
   border: 5px solid var(--primary);
+  box-shadow: var(--shadow);
 }
 
 .score-row {
@@ -177,28 +187,18 @@ body {
 .answer {
   padding: 12px;
   border: 3px solid var(--primary);
-  border-radius: 15px;
+  border-radius: var(--radius);
   font-weight: bold;
-  background: var(--accent); /* JAUNE */
+  background: var(--accent);
   cursor: pointer;
-  color: #111827; /* ✔️  */
+  color: #111827;
+  transition: var(--transition);
 }
 
-/* ✔️ FIX : TEXTE NOIR SUR JAUNE EN SOMBRE */
-body.dark .answer {
-  color:#111827;
+.answer:hover {
+  filter: brightness(1.1);
 }
-body.dark .answer.selected {
-  background: var(--primary);
-  color: white;}
-body.dark .answer.correct {
-  background: #16a34a;
-  color: white;
-}
-body.dark .answer.wrong {
-  background: #990000;
-  color: white;
-}
+
 .answer.selected {
   background: var(--primary);
   color: white;
@@ -214,6 +214,11 @@ body.dark .answer.wrong {
   color: white;
 }
 
+/* Mode sombre */
+body.dark .answer {
+  color: #111827;
+}
+
 /* ===========================
    BOUTONS
 =========================== */
@@ -222,50 +227,63 @@ body.dark .answer.wrong {
   padding: 14px;
   margin-top: 20px;
   border: none;
-  border-radius: 15px;
+  border-radius: var(--radius);
   background: var(--primary);
   color: white;
+  cursor: pointer;
   font-size: 16px;
+  transition: var(--transition);
 }
 
-body.dark .btn {
-  background: var(--primary);
+.btn:hover {
+  transform: scale(1.10);
+}
+#skip {
+  background: #9ca3af;
   color: white;
+  margin-top: 10px;
+  display: none;
 }
 
 .next {
   background: #475569;
-  color: white;
+  cursor: pointer;
 }
 
 /* ===========================
    TEXTE QUIZ
 =========================== */
-#definition,
-#feedback,
 #question-text {
-  font-size: 16px;
-  color: var(--text);
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#feedback,
+#definition {
+  font-size: 20px;
 }
 
 /* ===========================
-   LOGO + RETOUR
+   LOGO + FOOTER
 =========================== */
 .quiz-logo {
   width: 80px;
   margin-top: 20px;
 }
-.footer{
+
+.footer {
   display: flex;
   justify-content: center;
-
   padding: 30px;
 }
-.footer-logo{
+
+.footer-logo {
   max-width: 600px;
   width: 100%;
-    margin: 0 auto;
+  margin: 0 auto;
 }
+
 #returnHome {
   background: linear-gradient(135deg, #007bff, #00bfff);
   color: white;
@@ -275,22 +293,109 @@ body.dark .btn {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 20px;
-  transition: 0.25s ease;
+  margin: 20px auto 0;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  transition: var(--transition);
 }
 
-#returnHome.hidden {
-  display: none;
+#returnHome:hover {
+  transform: scale(1.05);
 }
 
 /* ===========================
-   RESPONSIVE
+   RESPONSIVE GLOBAL
 =========================== */
-@media (max-width: 600px) {
+
+/* Empêche tout débordement horizontal */
+body {
+  overflow-x: hidden;
+}
+
+/* Images toujours adaptatives */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Cartes centrées et limitées */
+.home-card,
+.quiz-card {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+
+/* ===========================
+   TABLETTES (≤ 900px)
+=========================== */
+@media (max-width: 900px) {
+
+  .home-title {
+    font-size: 26px;
+  }
+
+  #question-text {
+    font-size: 20px;
+  }
+
   .answers {
     grid-template-columns: 1fr;
   }
 }
+
+/* ===========================
+   TÉLÉPHONES (≤ 600px)
+=========================== */
+@media (max-width: 600px) {
+
+  .home-logo,
+  .quiz-logo {
+    width: 70px;
+  }
+
+  .home-title {
+    font-size: 24px;
+  }
+
+  .home-subtitle {
+    font-size: 15px;
+  }
+
+  #question-text {
+    font-size: 18px;
+  }
+
+  .answer {
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+/* ===========================
+   MINI (≤ 380px)
+=========================== */
+@media (max-width: 380px) {
+
+  .home-title {
+    font-size: 20px;
+  }
+
+  #question-text {
+    font-size: 16px;
+  }
+
+  .answer {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+

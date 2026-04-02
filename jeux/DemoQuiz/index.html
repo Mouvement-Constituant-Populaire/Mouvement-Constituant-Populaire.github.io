@@ -5,11 +5,11 @@
   <title>Démocratie Quiz</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header class="header">
-    
     <div class="theme-toggle">
       <span class="theme-label">Thème</span>
       <button id="themeSwitch" aria-pressed="false">🌓</button>
@@ -20,12 +20,12 @@
   <main id="home-screen" class="home-screen">
     <section class="home-card">
 
-      <img src="img/Demo_Quiz_bleu.png" class="home-logo">
+      <img src="img/Demo_Quiz_bleu.png" class="home-logo" alt="Logo du quiz">
 
       <h1 class="home-title">Démocratie Quiz</h1>
       <p class="home-subtitle">Testez vos connaissances sur la démocratie</p>
 
-      <p class="home-lead"><strong>Choisissez votre niveau (optionnel)</strong></p>
+      <p><strong>Choisissez votre niveau (optionnel)</strong></p>
 
       <div class="levels">
         <button class="level-btn" data-level="facile">★ Facile</button>
@@ -33,19 +33,14 @@
         <button class="level-btn" data-level="expert">★★★ Expert</button>
       </div>
 
-      <p class="home-info" id="selectedInfo">
+      <p id="selectedInfo">
         Vous pouvez choisir un niveau ou cliquer directement sur Commencer.
       </p>
 
       <button id="startBtn" class="start-btn">Commencer</button>
-    
+
     </section>
   </main>
-  <div  class= "footer">
-      <a href="https://mouvement-constituant-populaire.fr">
-        <img src="img/LogoPiedDePage.png" class="footer-logo" alt="Mouvement-Constituant-Populaire.fr">
-      </a>
-    </div>   
 
   <!-- ÉCRAN QUIZ -->
   <main id="quiz-screen" class="quiz-screen hidden">
@@ -62,26 +57,28 @@
         <div id="answers" class="answers"></div>
 
         <button id="validate" class="btn" disabled>Valider</button>
+        <button id="skip" class="btn next">Passer</button>
 
-        <p id="feedback" class="feedback"></p>
-        <p id="definition" class="definition"></p>
+
+        <p id="feedback"></p>
+        <p id="definition"></p>
 
         <button id="next" class="btn next" style="display:none;">Question suivante</button>
 
-        <img src="img/Demo_Quiz_bleu.png" class="quiz-logo">
-        
+        <img src="img/Demo_Quiz_bleu.png" class="quiz-logo" alt="Logo du quiz">
+
         <button id="returnHome" class="hidden">Retour à l'accueil</button>
+
       </section>
     </div>
-    <div  class= "footer">
-      <a href="https://mouvement-constituant-populaire.fr">
-        <img src="img/LogoPiedDePage.png" class="footer-logo" alt="Mouvement-Constituant-Populaire.fr">
-      </a>
-    </div>    
-    
   </main>
-  
 
+  <!-- FOOTER GLOBAL -->
+  <footer class="footer">
+    <a href="https://mouvement-constituant-populaire.fr">
+      <img src="img/LogoPiedDePage.png" class="footer-logo" alt="Mouvement Constituant Populaire">
+    </a>
+  </footer>
 
   <script src="script.js"></script>
 </body>
