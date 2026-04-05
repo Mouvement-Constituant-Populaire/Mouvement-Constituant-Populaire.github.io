@@ -16,65 +16,74 @@
     </div>
   </header>
 
-  <!-- ÉCRAN D’ACCUEIL -->
-  <main id="home-screen" class="home-screen">
-    <section class="home-card">
+  <!-- ÉCRAN NIVEAU / ACCUEIL -->
+  <main id="level-screen" class="screen">
+    <section class="card">
 
       <img src="img/Demo_Quiz_bleu.png" class="home-logo" alt="Logo du quiz">
 
-      <h1 class="home-title">Démocratie Quiz</h1>
-      <p class="home-subtitle">Testez vos connaissances sur la démocratie</p>
+      <h1 class="home-title">Démo Quiz</h1>
+      <p class="home-subtitle">Tester vos connaissance sur la Démocratie</p>
 
-      <p><strong>Choisissez votre niveau (optionnel)</strong></p>
+      <!--<div class="level-btn" data-level="facile">😊 Facile ★★☆</div>
+      <div class="level-btn" data-level="intermediaire">😐 Intermédiaire ★★★</div>
+      <div class="level-btn" data-level="expert">😡 Expert ★★★★</div>-->
 
-      <div class="levels">
-        <button class="level-btn" data-level="facile">★ Facile</button>
-        <button class="level-btn" data-level="intermediaire">★★ Intermédiaire</button>
-        <button class="level-btn" data-level="expert">★★★ Expert</button>
-      </div>
-
-      <p id="selectedInfo">
-        Vous pouvez choisir un niveau ou cliquer directement sur Commencer.
-      </p>
-
-      <button id="startBtn" class="start-btn">Commencer</button>
+      <button id="startQuiz" class="start-btn">Commencer le Quiz</button>
 
     </section>
   </main>
 
   <!-- ÉCRAN QUIZ -->
-  <main id="quiz-screen" class="quiz-screen hidden">
-    <div class="quiz-container">
-      <section class="quiz-card">
+  <main id="quiz-screen" class="screen hidden">
+    <section class="card">
 
-        <div class="score-row">
-          <div id="score"></div>
-          <div id="remaining"></div>
-        </div>
+      <div class="score-row">
+        <div id="question-counter"></div>
+        <!--<div id="timer" class="timer">00:00</div>-->
+      </div>
 
-        <h2 id="question-text"></h2>
+      <h2 id="question-text"></h2>
 
-        <div id="answers" class="answers"></div>
+      <div id="answers" class="answers"></div>
 
-        <button id="validate" class="btn" disabled>Valider</button>
-        <button id="skip" class="btn next">Passer</button>
+      <button id="validate" class="btn" disabled>Valider</button>
+      <!--button id="skip" class="btn next">Passer</button-->
 
+      <p id="feedback"></p>
+      <p id="definition"></p>
 
-        <p id="feedback"></p>
-        <p id="definition"></p>
-
-        <button id="next" class="btn next" style="display:none;">Question suivante</button>
-
+      <button id="next" class="btn next"
+      >Question suivante</button>
+      <div class="nav-arrows">
+        <span id="arrowPrev" class="arrow hidden">←</span>
         <img src="img/Demo_Quiz_bleu.png" class="quiz-logo" alt="Logo du quiz">
+        <span id="arrowNext" class="arrow">→</span>
+      </div>
 
-        <button id="returnHome" class="hidden">Retour à l'accueil</button>
+      
 
-      </section>
-    </div>
+    </section>
   </main>
 
-  <!-- FOOTER GLOBAL -->
+  <!-- ÉCRAN RÉSULTATS -->
+  <main id="result-screen" class="screen hidden">
+    <section class="card">
+      <h2 id="result-title">Quiz Terminé !</h2>
+      <div id="result-stars" class="result-stars"></div>
+      <p id="result-summary"></p>
+
+      <h3>Réponses incorrectes :</h3>
+      <div id="review-list"></div>
+
+      <button id="retry" class="btn next">Rejouer ce niveau</button>
+      <button id="backHome" class="btn">Retour à l'accueil</button>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
   <footer class="footer">
+    <p class="footer-text">Rejoindre le : </p>
     <a href="https://mouvement-constituant-populaire.fr">
       <img src="img/LogoPiedDePage.png" class="footer-logo" alt="Mouvement Constituant Populaire">
     </a>

@@ -11,16 +11,14 @@ Le projet inclut un système de niveaux, un thème clair/sombre, un affichage dy
 ### ✔️ Interface moderne
 - Page d’accueil avec logo, titre et sous‑titre
 - Bouton **Commencer**
-- Sélection optionnelle du niveau :
-  - ★ Facile  
-  - ★★ Intermédiaire  
-  - ★★★ Expert  
 
 ### ✔️ Quiz interactif
 - Affichage d’une question à la fois
 - 4 réponses possibles
 - Sélection visuelle de la réponse
 - Bouton **Valider**
+- Fléche passer
+- Fléche retour
 - Feedback immédiat :
   - Réponse correcte (vert)
   - Réponse incorrecte (rouge)
@@ -51,6 +49,7 @@ Le projet inclut un système de niveaux, un thème clair/sombre, un affichage dy
 │── script.js
 │── questions.json
 │── Demo_Quiz_bleu.png
+|__ LogoPiedDePage.png
 │── README.md
 
 ```
