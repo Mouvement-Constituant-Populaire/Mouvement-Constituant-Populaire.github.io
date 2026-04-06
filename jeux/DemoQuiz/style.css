@@ -86,8 +86,26 @@ img {
 /* ===========================
    LAYOUT GLOBAL
 =========================== */
-.screen {
+/* ===========================
+   LAYOUT GLOBAL
+=========================== */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  overflow-x: hidden;
+  /* Ajout pour layout sans scroll */
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+  transition: background var(--transition), color var(--transition);
+}
+
+.screen {
+  /* Remplacer min-height: 100vh par flex: 1 */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -95,7 +113,6 @@ img {
   padding: 20px;
   box-sizing: border-box;
 }
-
 /* ===========================
    CARDS
 =========================== */
@@ -354,15 +371,16 @@ body.dark .review-item {
 /* ===========================
    FOOTER
 =========================== */
-.quiz-logo {
-  width: 80px;
-  margin-top: 20px;
-  pointer-events: none;
-}
-
 .footer {
   text-align: center;
-  padding: 10px 0;
+  padding: 6px 0;        /* réduit depuis 10px */
+  flex-shrink: 0;
+}
+
+.quiz-logo {
+  width: 80px;
+  margin-top: 10px;      /* réduit depuis 20px */
+  pointer-events: none;
 }
 
 .footer-text {
