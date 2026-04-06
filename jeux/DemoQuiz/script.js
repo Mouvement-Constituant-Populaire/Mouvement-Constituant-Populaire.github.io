@@ -213,15 +213,49 @@ function loadQuestion() {
 
     answersDiv.appendChild(div);
   });
-  
-if (currentIndex === 0) {
-  arrowPrev.classList.add("hidden");
-} else {
-  arrowPrev.classList.remove("hidden");
-}
 
-arrowNext.classList.remove("hidden");
-document.querySelector(".nav-arrows").classList.remove("hidden");
+  /*  gestion des questions déjà répondues */
+  if (q.answered) {
+    const answers = document.querySelectorAll(".answer");
+
+    answers.forEach((a, i) => {
+      a.style.pointerEvents = "none"; // on bloque les clics
+
+      if (i === q.correct) a.classList.add("correct");
+      if (i === q.selected && i !== q.correct) a.classList.add("wrong");
+      if (i === q.selected) a.classList.add("selected");
+    });
+
+    // Feedback
+    feedback.textContent =
+      q.selected === q.correct ? "Bonne réponse !" : "Dommage";
+
+    // Définition
+    definition.textContent =
+      q.definition && q.definition.trim() !== ""
+        ? "Complément : " + q.definition
+        : "";
+
+    // Boutons
+    validateBtn.style.display = "none";
+    nextBtn.style.display = "block";
+    nextBtn.disabled = false;
+
+    // Cacher les flèches si tu veux
+    document.querySelector(".nav-arrows").classList.add("hidden");
+
+    return; // on arrête ici
+  }
+
+  // Affichage flèches (uniquement si pas répondu)
+  if (currentIndex === 0) {
+    arrowPrev.classList.add("hidden");
+  } else {
+    arrowPrev.classList.remove("hidden");
+  }
+
+  arrowNext.classList.remove("hidden");
+  document.querySelector(".nav-arrows").classList.remove("hidden");
 }
 
 /* ==========================
@@ -235,6 +269,10 @@ validateBtn.addEventListener("click", () => {
   if (!selected) return;
 
   const selectedIndex = Number(selected.dataset.index);
+
+  // 👉 ICI : on enregistre que la question a été répondue
+  q.answered = true;
+  q.selected = selectedIndex;
 
   answers.forEach((a, i) => {
     a.style.pointerEvents = "none";
@@ -264,11 +302,19 @@ validateBtn.addEventListener("click", () => {
   nextBtn.disabled = false;
 
 
-  
+  //  ICI : cacher les flèches après validation
 document.querySelector(".nav-arrows").classList.add("hidden");
   
 });
 
+/*==============
+skipBtn.addEventListener("click", () => {
+  currentIndex++;
+  validateBtn.style.display = "block";
+  validateBtn.disabled = true;
+  loadQuestion();
+});
+===============*/
 arrowPrev.addEventListener("click", () => {
   if (currentIndex > 0) {
     currentIndex--;
@@ -320,9 +366,11 @@ function endQuiz() {
 
   resultTitle.textContent = "Bravo ! Quiz Terminé !";
 
-    resultStars.textContent = "";
+  // On n'affiche plus les étoiles
+  resultStars.textContent = "";
 
-    resultSummary.innerHTML =
+  // On n'affiche plus le score
+  resultSummary.innerHTML =
     `Questions répondues : ${answered} / ${total}<br>` +
     `${message}`;
 
