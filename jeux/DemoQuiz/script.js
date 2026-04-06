@@ -174,6 +174,7 @@ function resetQuestionUI() {
   definition.textContent = "";
   answersDiv.innerHTML = "";
   validateBtn.disabled = true;
+  validateBtn.style.display = "none"
   nextBtn.style.display = "none";
   //skipBtn.style.display = "block";
 }
@@ -207,6 +208,7 @@ function loadQuestion() {
       document.querySelectorAll(".answer").forEach(a => a.classList.remove("selected"));
       div.classList.add("selected");
       validateBtn.disabled = false;
+      validateBtn.style.display = "block";
     };
 
     answersDiv.appendChild(div);
