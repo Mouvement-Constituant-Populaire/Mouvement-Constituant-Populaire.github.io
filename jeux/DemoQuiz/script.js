@@ -213,7 +213,7 @@ function loadQuestion() {
 
     answersDiv.appendChild(div);
   });
-  // Affichage flèches
+  
 if (currentIndex === 0) {
   arrowPrev.classList.add("hidden");
 } else {
@@ -264,19 +264,11 @@ validateBtn.addEventListener("click", () => {
   nextBtn.disabled = false;
 
 
-  //  ICI : cacher les flèches après validation
+  
 document.querySelector(".nav-arrows").classList.add("hidden");
   
 });
 
-/*==============
-skipBtn.addEventListener("click", () => {
-  currentIndex++;
-  validateBtn.style.display = "block";
-  validateBtn.disabled = true;
-  loadQuestion();
-});
-===============*/
 arrowPrev.addEventListener("click", () => {
   if (currentIndex > 0) {
     currentIndex--;
@@ -328,11 +320,9 @@ function endQuiz() {
 
   resultTitle.textContent = "Bravo ! Quiz Terminé !";
 
-  // On n'affiche plus les étoiles
-  resultStars.textContent = "";
+    resultStars.textContent = "";
 
-  // On n'affiche plus le score
-  resultSummary.innerHTML =
+    resultSummary.innerHTML =
     `Questions répondues : ${answered} / ${total}<br>` +
     `${message}`;
 
