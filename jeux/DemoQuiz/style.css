@@ -86,9 +86,6 @@ img {
 /* ===========================
    LAYOUT GLOBAL
 =========================== */
-/* ===========================
-   LAYOUT GLOBAL
-=========================== */
 body {
   margin: 0;
   background: var(--bg);
@@ -96,7 +93,6 @@ body {
   font-family: Arial, sans-serif;
   font-size: 16px;
   overflow-x: hidden;
-  /* Ajout pour layout sans scroll */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -104,7 +100,6 @@ body {
 }
 
 .screen {
-  /* Remplacer min-height: 100vh par flex: 1 */
   flex: 1;
   display: flex;
   justify-content: center;
@@ -237,7 +232,6 @@ body {
   color: white;
 }
 
-/* 🔧 Correction contraste mode sombre */
 body.dark .answer {
   color: #111827;
   filter: brightness(1.15);
@@ -268,12 +262,12 @@ body.dark .answer {
   margin-top: 10px;
 }
 
-/* 🔧 Correction cohérence mode sombre */
+
 body.dark #skip {
   background: #6b7280;
 }
 
-/* 🔧 Correction cohérence bouton .next */
+
 .next {
   background: linear-gradient(135deg, #007bff, #00bfff);
 }
@@ -292,7 +286,7 @@ body.dark .next {
 .nav-arrows .quiz-logo {
   margin: 0 auto;
   flex: 0 0 auto;
-  /* 🔥 LA LIGNE QUI RÈGLE TOUT */
+  
 }
 .nav-arrows.hidden {
   display: none !important;
@@ -341,11 +335,15 @@ body.dark .next {
   margin: 10px 0;
 }
 
-/* 🔧 Amélioration mode sombre */
+/*  Amélioration mode sombre */
 body.dark .result-stars {
   color: var(--primary);
 }
-
+#definition {
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.5;
+}
 #review-list {
   text-align: left;
   max-height: 300px;
@@ -357,7 +355,7 @@ body.dark .result-stars {
   padding: 8px 0;
 }
 
-/* 🔧 Correction contraste mode sombre */
+/*  Correction contraste mode sombre */
 body.dark .review-item {
   border-bottom: 1px solid #444;
 }
@@ -371,13 +369,13 @@ body.dark .review-item {
 =========================== */
 .footer {
   text-align: center;
-  padding: 6px 0;        /* réduit depuis 10px */
+  padding: 6px 0;        
   flex-shrink: 0;
 }
 
 .quiz-logo {
   width: 80px;
-  margin-top: 10px;      /* réduit depuis 20px */
+  margin-top: 10px;      
   pointer-events: none;
 }
 
@@ -387,7 +385,6 @@ body.dark .review-item {
   color: #111827;
 }
 
-/* 🔧 Correction mode sombre footer */
 body.dark .footer-text {
   color: var(--text);
 }

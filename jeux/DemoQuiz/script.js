@@ -246,7 +246,7 @@ validateBtn.addEventListener("click", () => {
     score++;
     feedback.textContent = "Bonne réponse !";
   } else {
-    feedback.textContent = "Mauvaise réponse.";
+    feedback.textContent = "Dommage";
     wrongAnswers.push({
       question: q.question,
       yourAnswer: q.answers[selectedIndex],
@@ -264,7 +264,7 @@ validateBtn.addEventListener("click", () => {
   nextBtn.disabled = false;
 
 
-  // 🔥 ICI : cacher les flèches après validation
+  //  ICI : cacher les flèches après validation
 document.querySelector(".nav-arrows").classList.add("hidden");
   
 });
@@ -303,25 +303,38 @@ nextBtn.addEventListener("click", () => {
    9. FIN DE QUIZ
 ========================== */
 
-function getStars(score, total) {
+function getMessage(score, total) {
   const ratio = score / total;
-  if (ratio >= 0.9) return "★★★★";
-  if (ratio >= 0.75) return "★★★";
-  if (ratio >= 0.5) return "★★";
-  return "★";
+
+  if (ratio >= 0.9) 
+    return "Excellent ! Tu maîtrises vraiment le sujet 👏";
+
+  if (ratio >= 0.75) 
+    return "Très bon résultat ! Tu es sur la bonne voie 💪";
+
+  if (ratio >= 0.5) 
+    return "Bravo ! Tu as plusieurs bonnes réponses, persévère et tu vas t'améliorer 😊";
+
+  return "Courage ! Continue d’apprendre et tu progresseras vite 🌱";
 }
+
 
 function endQuiz() {
   showScreen(resultScreen);
 
   const total = questions.length;
-  const stars = getStars(score, total);
+  const answered = score + wrongAnswers.length;
+  const message = getMessage(score, total);
 
   resultTitle.textContent = "Bravo ! Quiz Terminé !";
-  resultStars.textContent = stars;
+
+  // On n'affiche plus les étoiles
+  resultStars.textContent = "";
+
+  // On n'affiche plus le score
   resultSummary.innerHTML =
-    `Score : ${score} / ${total}<br>` +
-    `Niveau : Unique`;
+    `Questions répondues : ${answered} / ${total}<br>` +
+    `${message}`;
 
   if (wrongAnswers.length === 0) {
     reviewList.innerHTML = "<p>Aucune erreur, félicitations ! 🎉</p>";
@@ -335,3 +348,4 @@ function endQuiz() {
     `).join("");
   }
 }
+
