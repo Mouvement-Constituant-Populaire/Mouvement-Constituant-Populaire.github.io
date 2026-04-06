@@ -95,7 +95,7 @@ body {
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100dvh;
   transition: background var(--transition), color var(--transition);
 }
 
@@ -105,7 +105,7 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
-  padding: 20px;
+  padding: 10px;
   box-sizing: border-box;
 }
 /* ===========================
@@ -121,6 +121,9 @@ body {
   border: 5px solid var(--primary);
   box-shadow: var(--shadow);
   text-align: center;
+  max-height: calc(100dvh - 120px);
+  overflow-y: auto;
+
 }
 
 /* ===========================
@@ -226,12 +229,18 @@ body {
   background: #16a34a;
   color: white;
 }
-
+body.dark .answer.correct {
+  background: #16a34a;
+  color: white;
+}
 .answer.wrong {
   background: #990000;
   color: white;
 }
-
+body.dark .answer.wrong {
+  background: #990000;
+  color: white;
+}
 body.dark .answer {
   color: #111827;
   filter: brightness(1.15);
