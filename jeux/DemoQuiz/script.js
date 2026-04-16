@@ -341,7 +341,7 @@ nextBtn.addEventListener("click", () => {
    9. FIN DE QUIZ
 ========================== */
 
-/*function getMessage(score, total) {
+function getMessage(score, total) {
   const ratio = score / total;
 
   if (ratio >= 0.9) 
@@ -355,7 +355,7 @@ nextBtn.addEventListener("click", () => {
 
   return "Courage ! Continue d’apprendre et tu progresseras vite 🌱";
 }
-*/
+
 
 function endQuiz() {
   showScreen(resultScreen);
@@ -366,16 +366,17 @@ function endQuiz() {
 
   resultTitle.textContent = "Bravo ! Quiz Terminé !";
 
+  // On n'affiche plus les étoiles
   resultStars.textContent = "";
 
-  
- resultSummary.innerHTML =
-    `✅ Score : <strong>${score} / ${total}</strong><br>` +
-    `Questions répondues : <strong>${answered} / ${total}</strong><br>` +
-    
+  // On n'affiche plus le score
+  resultSummary.innerHTML =
+    `✅ Score : ${score} / ${total}<br>` +
+    `Questions répondues : ${answered} / ${total}<br>` +
+    `${message}`;
   if (answered === 0) {
     resultTitle.textContent = "Quiz Terminé !";
-    resultSummary.innerHTML = "Tu n'as répondu à aucune question ! 💡";
+    resultSummary.innerHTML = "Tu n'as répondu à aucune question.  ! 💡";
     reviewList.innerHTML = "";
   } else if (wrongAnswers.length === 0) {
     reviewList.innerHTML = "<p>Aucune erreur, félicitations ! 🎉</p>";
@@ -383,7 +384,7 @@ function endQuiz() {
     reviewList.innerHTML = wrongAnswers.map(w => `
       <div class="review-item">
         <p><strong>${w.question}</strong></p>
-        <p>Votre réponse : <strong>${w.yourAnswer}</strong></p>
+        <p>Votre réponse : ${w.yourAnswer}</p>
         <p>Réponse correcte : ${w.correctAnswer}</p>
       </div>
     `).join("");
