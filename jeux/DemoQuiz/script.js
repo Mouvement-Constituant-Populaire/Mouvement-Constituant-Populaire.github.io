@@ -368,7 +368,7 @@ function endQuiz() {
 
   resultStars.textContent = "";
 
-  // On n'affiche plus le score
+  
  resultSummary.innerHTML =
     `✅ Score : <strong>${score} / ${total}</strong><br>` +
     `Questions répondues : <strong>${answered} / ${total}</strong><br>` +
@@ -383,7 +383,7 @@ function endQuiz() {
     reviewList.innerHTML = wrongAnswers.map(w => `
       <div class="review-item">
         <p><strong>${w.question}</strong></p>
-        <p>Votre réponse : ${w.yourAnswer}</p>
+        <p>Votre réponse : <strong>${w.yourAnswer}</strong></p>
         <p>Réponse correcte : ${w.correctAnswer}</p>
       </div>
     `).join("");
