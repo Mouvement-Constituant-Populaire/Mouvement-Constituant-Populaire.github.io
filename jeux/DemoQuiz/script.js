@@ -370,7 +370,8 @@ function endQuiz() {
   resultStars.textContent = "";
 
   // On n'affiche plus le score
-  resultSummary.innerHTML =
+ resultSummary.innerHTML =
+    `✅ Score : ${score} / ${total}<br>` +
     `Questions répondues : ${answered} / ${total}<br>` +
     `${message}`;
 
