@@ -371,7 +371,7 @@ function endQuiz() {
 
   // On n'affiche plus le score
  resultSummary.innerHTML =
-    `✅ Score : $<strong>{score} </strong>/ ${total}<br>` +
+    `✅ Score : <strong>${score} / ${total}</strong><br>` +
     `Questions répondues : $<strong>{answered}</strong> / ${total}<br>` +
     
   if (answered === 0) {
