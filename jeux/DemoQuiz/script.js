@@ -341,7 +341,7 @@ nextBtn.addEventListener("click", () => {
    9. FIN DE QUIZ
 ========================== */
 
-function getMessage(score, total) {
+/*function getMessage(score, total) {
   const ratio = score / total;
 
   if (ratio >= 0.9) 
@@ -355,7 +355,7 @@ function getMessage(score, total) {
 
   return "Courage ! Continue d’apprendre et tu progresseras vite 🌱";
 }
-
+*/
 
 function endQuiz() {
   showScreen(resultScreen);
@@ -371,8 +371,8 @@ function endQuiz() {
 
   // On n'affiche plus le score
  resultSummary.innerHTML =
-    `✅ Score : <strong>${score} </strong>/ ${total}<br>` +
-    `Questions répondues : <strong>${answered}</strong> / ${total}<br>` +
+    `✅ Score : $<strong>{score} </strong>/ ${total}<br>` +
+    `Questions répondues : $<strong>{answered}</strong> / ${total}<br>` +
     
   if (answered === 0) {
     resultTitle.textContent = "Quiz Terminé !";
