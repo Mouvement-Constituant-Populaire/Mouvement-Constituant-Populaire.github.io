@@ -366,7 +366,6 @@ function endQuiz() {
 
   resultTitle.textContent = "Bravo ! Quiz Terminé !";
 
-  // On n'affiche plus les étoiles
   resultStars.textContent = "";
 
   // On n'affiche plus le score
