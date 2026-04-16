@@ -204,12 +204,12 @@ function loadQuestion() {
     div.textContent = text;
     div.dataset.index = i;
 
-    div.onclick = () => {
-      document.querySelectorAll(".answer").forEach(a => a.classList.remove("selected"));
-      div.classList.add("selected");
-      validateBtn.disabled = false;
-      validateBtn.style.display = "block";
-    };
+div.onclick = () => {
+  document.querySelectorAll(".answer").forEach(a => a.classList.remove("selected"));
+  div.classList.add("selected");
+  validateBtn.disabled = false;
+  validateBtn.click();
+};  
 
     answersDiv.appendChild(div);
   });
@@ -374,7 +374,11 @@ function endQuiz() {
     `Questions répondues : ${answered} / ${total}<br>` +
     `${message}`;
 
-  if (wrongAnswers.length === 0) {
+  if (answered === 0) {
+    resultTitle.textContent = "Quiz Terminé !";
+    resultSummary.innerHTML = "Tu n'as répondu à aucune question. Lance-toi la prochaine fois ! 💡";
+    reviewList.innerHTML = "";
+  } else if (wrongAnswers.length === 0) {
     reviewList.innerHTML = "<p>Aucune erreur, félicitations ! 🎉</p>";
   } else {
     reviewList.innerHTML = wrongAnswers.map(w => `
