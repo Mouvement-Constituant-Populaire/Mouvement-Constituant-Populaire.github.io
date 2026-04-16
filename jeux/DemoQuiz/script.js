@@ -376,7 +376,7 @@ function endQuiz() {
 
   if (answered === 0) {
     resultTitle.textContent = "Quiz Terminé !";
-    resultSummary.innerHTML = "Tu n'as répondu à aucune question. Lance-toi la prochaine fois ! 💡";
+    resultSummary.innerHTML = "Tu n'as répondu à aucune question ! 💡";
     reviewList.innerHTML = "";
   } else if (wrongAnswers.length === 0) {
     reviewList.innerHTML = "<p>Aucune erreur, félicitations ! 🎉</p>";
