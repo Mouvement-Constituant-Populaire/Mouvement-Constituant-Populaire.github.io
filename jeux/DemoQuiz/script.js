@@ -369,10 +369,11 @@ function endQuiz() {
   // On n'affiche plus les étoiles
   resultStars.textContent = "";
 
-  //   le score 
+  // On n'affiche plus le score
   resultSummary.innerHTML =
-    `✅ Score : <strong>${score}</strong> / ${total}<br>` +
-    `Questions répondues : <strong>${answered}</strong> / ${total};
+    `✅ Score : ${score} / ${total}<br>` +
+    `Questions répondues : ${answered} / ${total}<br>` +
+    `${message}`;
   if (answered === 0) {
     resultTitle.textContent = "Quiz Terminé !";
     resultSummary.innerHTML = "Tu n'as répondu à aucune question.  ! 💡";
